@@ -8,16 +8,13 @@ import math
 from typing import List
 
 
-def index_range(page: int, page_size: int) -> tuple:
+def index_range(page, page_size):
     """
-    Takes two integer arguments page and page_size.
-    Returns a tuple of size two containing a start
-    index and an end index corresponding to the range
-    of indexes to return in a list for those particular
-    pagination parameters.
+    pagination
     """
-    index_tuple = page_size * (page - 1), page * page_size
-    return index_tuple
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+    return start_index, end_index
 
 
 class Server:
