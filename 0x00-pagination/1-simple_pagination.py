@@ -3,6 +3,19 @@ import math
 from typing import List
 
 
+def index_range(page, page_size):
+    """
+    Takes two integer arguments page and page_size.
+    Returns a tuple of size two containing a start
+    index and an end index corresponding to the range
+    of indexes to return in a list for those particular
+    pagination parameters.
+    """
+    start_index = (page - 1) * page_size
+    end_index = start_index + page_size
+    return start_index, end_index
+
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -35,16 +48,3 @@ class Server:
                 return data[indexes[0]: indexes[1]]
             except IndexError:
                 return []
-
-
-def index_range(page, page_size):
-    """
-    Takes two integer arguments page and page_size.
-    Returns a tuple of size two containing a start
-    index and an end index corresponding to the range
-    of indexes to return in a list for those particular
-    pagination parameters.
-    """
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size
-    return start_index, end_index
