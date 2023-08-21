@@ -23,17 +23,18 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """Cached dataset
             """
-            assert isinstance(page, int) and page > 0, "Page must be a positive integer."
-            assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer."
-            dataset = self.dataset()
-            start_index, end_index = index_range(page, page_size)
+            paginate dataset
+            """
+            assert type(page) is int and page > 0
+            assert type(page_size) is int and page_size > 0
 
-            if start_index >= len(dataset):
+            indexes = index_range(page, page_size)
+            try:
+                data = self.dataset()
+                return data[indexes[0]: indexes[1]]
+            except IndexError:
                 return []
-
-            return dataset[start_index:end_index]
 
 
 def index_range(page, page_size):
