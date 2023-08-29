@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
-"""
-Module 0-app
-"""
+""" Basic Flask app """
 from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
-@app.route("/")
-def index():
-    """didplays a basic hello world message"""
-    return render_template("0-index.html")
+@app.route('/')
+def root():
+    """ basic Flask app """
+    return render_template('0-index.html')
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
